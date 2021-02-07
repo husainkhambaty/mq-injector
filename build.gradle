@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'application'
+
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'idea'
+
+group = 'com.fifty2minds.tools'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+
+dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-json'
+    implementation 'org.springframework.boot:spring-boot-starter-artemis'
+    implementation 'com.ibm.mq:mq-jms-spring-boot-starter:2.0.0'
+
+}
+
+application {
+    mainClassName = 'com.fifty2minds.tools.App'
+}
+
+bootJar {
+    mainClassName = 'com.fifty2minds.tools.App'
+}
+applicationDefaultJvmArgs = ["-Xms512m", "-Xmx1024m"]
